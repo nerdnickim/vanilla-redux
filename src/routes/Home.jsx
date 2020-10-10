@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { actionCreators } from "../store";
 
 class Home extends React.Component {
 	constructor(props) {
@@ -11,6 +12,7 @@ class Home extends React.Component {
 
 	onSubmit = (e) => {
 		e.preventDefault();
+		this.props.addToDo(this.state.text);
 		this.setState({
 			text: "",
 		});
@@ -32,7 +34,7 @@ class Home extends React.Component {
 					placeholder="todo"
 				/>
 				<button>add</button>
-				<ul></ul>
+				<ul>{JSON.stringify(this.props.toDos)}</ul>
 			</form>
 		);
 	}
@@ -42,4 +44,10 @@ const mapStateToProps = (state) => {
 	return { toDos: state };
 };
 
-export default connect(mapStateToProps)(Home);
+const mapDispatchToProps = (dispatch) => {
+	return {
+		addToDo: (text) => dispatch(actionCreators.addToDo(text)),
+	};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

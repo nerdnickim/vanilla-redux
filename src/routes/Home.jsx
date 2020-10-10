@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import ToDo from "../Components/ToDo";
 import { actionCreators } from "../store";
 
 class Home extends React.Component {
@@ -34,7 +35,11 @@ class Home extends React.Component {
 					placeholder="todo"
 				/>
 				<button>add</button>
-				<ul>{JSON.stringify(this.props.toDos)}</ul>
+				<ul>
+					{this.props.toDos.map((toDo) => (
+						<ToDo {...toDo} key={toDo.id} />
+					))}
+				</ul>
 			</form>
 		);
 	}

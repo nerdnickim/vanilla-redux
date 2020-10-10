@@ -8,10 +8,12 @@ class List extends React.Component {
 		super(props);
 	}
 	render() {
+		const { text, onBtnClick } = this.props;
+
 		return (
 			<li>
-				{this.props.text}
-				<button onClick={this.props.onBtnClick}>DEL</button>
+				{text}
+				<button onClick={onBtnClick}>DEL</button>
 			</li>
 		);
 	}

@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 
 class Home extends React.Component {
 	constructor(props) {
@@ -31,9 +32,14 @@ class Home extends React.Component {
 					placeholder="todo"
 				/>
 				<button>add</button>
+				<ul></ul>
 			</form>
 		);
 	}
 }
 
-export default Home;
+const mapStateToProps = (state) => {
+	return { toDos: state };
+};
+
+export default connect(mapStateToProps)(Home);

@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { actionCreators } from "../store";
 
 class List extends React.Component {
@@ -8,11 +9,11 @@ class List extends React.Component {
 		super(props);
 	}
 	render() {
-		const { text, onBtnClick } = this.props;
+		const { text, onBtnClick, id } = this.props;
 
 		return (
 			<li>
-				{text}
+				<Link to={`/${id}`}>{text}</Link>
 				<button onClick={onBtnClick}>DEL</button>
 			</li>
 		);

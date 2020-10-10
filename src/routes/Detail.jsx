@@ -1,9 +1,30 @@
 import React from "react";
+import { connect } from "react-redux";
 
 class Detail extends React.Component {
+	// eslint-disable-next-line no-useless-constructor
+	constructor(props) {
+		super(props);
+	}
 	render() {
-		return <div>Detail</div>;
+		const { toDo } = this.props;
+		return (
+			<>
+				<h1>{toDo.text}</h1>
+				<h5>created at: {toDo.id}</h5>
+			</>
+		);
 	}
 }
 
-export default Detail;
+const mapStateToProps = (state, ownProps) => {
+	const {
+		match: {
+			params: { id },
+		},
+	} = ownProps;
+
+	return { toDo: state.find((toDo) => toDo.id === parseInt(id)) };
+};
+
+export default connect(mapStateToProps)(Detail);

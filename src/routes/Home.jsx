@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import ToDo from "../Components/ToDo";
-import { actionCreators } from "../store";
+import { add } from "../store";
 
 class Home extends React.Component {
 	constructor(props) {
@@ -51,7 +51,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		addToDo: (text) => dispatch(actionCreators.addToDo(text)),
+		addToDo: (text) => dispatch(add(text)),
 	};
 };
 

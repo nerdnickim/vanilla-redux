@@ -1,12 +1,10 @@
-import { createAction } from "@reduxjs/toolkit";
+import { createAction, createReducer } from "@reduxjs/toolkit";
 import { createStore } from "redux";
-
-const ADD = "ADD",
-	DELETE = "DELETE";
 
 const addToDo = createAction("ADD"),
 	deleteToDo = createAction("DELETE");
 
+/*
 const reducer = (state = [], action) => {
 	switch (action.type) {
 		case ADD:
@@ -17,6 +15,14 @@ const reducer = (state = [], action) => {
 			return state;
 	}
 };
+*/
+
+const reducer = createReducer([], {
+	[addToDo]: (state, action) => {
+		state.push({ text: action.payload, id: Date.now() });
+	},
+	[deleteToDo]: (state, action) => state.filter((toDo) => toDo.id !== action.payload),
+});
 
 export const actionCreators = {
 	addToDo,

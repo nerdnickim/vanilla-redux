@@ -7,9 +7,14 @@ class List extends React.Component {
 	// eslint-disable-next-line no-useless-constructor
 	constructor(props) {
 		super(props);
+		this.state = {
+			text: this.props.text,
+			id: this.props.id,
+			onBtnClick: this.props.onBtnClick,
+		};
 	}
 	render() {
-		const { text, onBtnClick, id } = this.props;
+		const { text, onBtnClick, id } = this.state;
 
 		return (
 			<li>

@@ -5,13 +5,18 @@ class Detail extends React.Component {
 	// eslint-disable-next-line no-useless-constructor
 	constructor(props) {
 		super(props);
+		this.state = {
+			toDo: this.props.toDo,
+		};
 	}
 	render() {
-		const { toDo } = this.props;
+		const {
+			toDo: { text, id },
+		} = this.state;
 		return (
 			<>
-				<h1>{toDo.text}</h1>
-				<h5>created at: {toDo.id}</h5>
+				<h1>{text}</h1>
+				<h5>created at: {id}</h5>
 			</>
 		);
 	}
